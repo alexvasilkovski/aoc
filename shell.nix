@@ -1,4 +1,10 @@
 { pkgs ? import <nixpkgs> {} }:
+let
+  rust-overlay = (import (builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"));
+  pkgs = (import <nixpkgs> {
+    overlays = [ rust-overlay ];
+  });
+in
   pkgs.mkShell rec {
 
     buildInputs = with pkgs; [
@@ -6,7 +12,13 @@
       clang
       llvmPackages_16.bintools
       rustup
-    ];
+      bashInteractive
+
+      (pkgs.rust-bin.stable.latest.rust.override {
+      extensions = ["rust-src"];
+    })];
+
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
     RUSTC_VERSION = pkgs.lib.readFile ./rust-toolchain;
 
