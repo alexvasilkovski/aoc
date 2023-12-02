@@ -60,7 +60,7 @@ impl Solution {
 
       let mut sums: Vec<i32> = Vec::new();
 
-      for inner_array in ca.iter().skip(1) {
+      for inner_array in c.iter().skip(1) {
         let total: i32 = inner_array[0] + inner_array[1] + inner_array[2];
         println!("{:?}", sums);
         sums.push(total);
