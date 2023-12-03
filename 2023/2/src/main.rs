@@ -17,7 +17,7 @@ fn main() -> io::Result<()> {
     let result2: i32  = Solution::p2(line_str);
     total2 = total2 + result2;
   }
-  
+
   println!("Part A: {}", total1);
   println!("Part B: {}", total2);
   
