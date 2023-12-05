@@ -20,7 +20,7 @@ in
 
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
-    RUSTC_VERSION = pkgs.lib.readFile ./rust-toolchain;
+    RUSTC_VERSION = "stable";
 
     LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs.llvmPackages_latest.libclang.lib ];
 
